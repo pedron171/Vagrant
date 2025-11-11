@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www/html":{"owner":"www-data","group":"www-data","create":true,"guestpath":"/var/www/html","hostpath":"C:/Users/UniALFA/Documents/ServidorWeb/site","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/UniALFA/Documents/ServidorWeb","disabled":false,"__vagrantfile":true}}}

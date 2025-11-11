@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
   # Box oficial Ubuntu 24.04 (Noble)
-  config.vm.box = "ubuntu/noble64"
+  config.vm.box = "ubuntu/jammy64"
 
   # Nome da VM
   config.vm.hostname = "servidor-web"

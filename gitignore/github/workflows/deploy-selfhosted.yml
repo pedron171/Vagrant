@@ -1,0 +1,37 @@
+name: Deploy to Nginx (Self-hosted)
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, vagrant-nginx]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show current user and host
+        run: |
+          echo "Running on $(hostname)"
+          whoami
+          pwd
+
+      - name: Deploy files to /var/www/html
+        run: |
+          sudo mkdir -p /var/www/html
+          sudo rm -rf /var/www/html/*
+          sudo cp -R site/* /var/www/html/
+          sudo chown -R www-data:www-data /var/www/html
+          sudo find /var/www/html -type d -exec chmod 755 {} \;
+          sudo find /var/www/html -type f -exec chmod 644 {} \;
+
+      - name: Test Nginx and reload
+        run: |
+          sudo nginx -t
+          sudo systemctl reload nginx
+
+      - name: Confirm deployment
+        run: |
+          curl -I http://127.0.0.1 | head -n 1
