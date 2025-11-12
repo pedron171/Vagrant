@@ -17,5 +17,5 @@ jobs:
       run: |
         cd /var/www/html/Vagrant
         sudo git pull origin main
-        sudo systemctl restart nginx
+        sudo systemctl restart apache2
         echo "Deploy realizado com sucesso em $(date)"
