@@ -15,7 +15,7 @@ jobs:
     
     - name: Atualizar site
       run: |
-        cd /var/www/html
+        cd /var/www/html/Vagrant
         sudo git pull origin main
         sudo systemctl restart nginx
         echo "Deploy realizado com sucesso em $(date)"
